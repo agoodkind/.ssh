@@ -1,4 +1,7 @@
 Include ~/.dotfiles/.ssh_config.local
+# Include ~/.ssh/ssh_config.local
+# Include ~/.ssh/jetkvm_config
+# Include ~/.ssh/containers_config
 
 # Read more about SSH config files: <https://linux.die.net/man/5/ssh_config>
 
@@ -19,10 +22,6 @@ Host vault
   User agoodkind
   HostName vault.home.goodkind.io
 
-Host logs
-  User agoodkind
-  HostName logs.home.goodkind.io
-
 Host suburban
   User agoodkind
   HostName 128-nj.goodkind.io
@@ -37,14 +36,6 @@ Host mom
 Host mini
   HostName mini.home.goodkind.io
   User agoodkind
-
-Host jetkvm
-  User root
-  HostName jetkvm.home.goodkind.io
-  ForwardAgent yes
-  LocalForward 80 localhost:8080
-  LocalForward 443 localhost:8443
-  ProxyJump mini
 
 Host berylax
   HostName berylax.mobile.goodkind.io
@@ -73,3 +64,20 @@ Host nas
   HostName nas.home.goodkind.io
   User agoodkind
   ForwardAgent yes
+
+Host debianct
+  HostName debianct.home.goodkind.io
+  User root
+  ForwardAgent yes
+
+Host vault-jetkvm
+  Hostname vault-jetkvm.goodkind.io
+  User root
+  ForwardAgent yes
+  LocalForward 80 localhost:8081
+
+Host nas-kvm
+  Hostname nas-jetkvm.goodkind.io
+  User root
+  ForwardAgent yes
+  LocalForward 80 localhost:8082
